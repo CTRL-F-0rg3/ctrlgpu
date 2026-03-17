@@ -1,14 +1,33 @@
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
-}
+pub mod types;
+pub mod instance;
+pub mod device;
+pub mod surface;
+pub mod swapchain;
+pub mod renderpass;
+pub mod framebuffer;
+pub mod pipeline;
+pub mod shader;
+pub mod buffer;
+pub mod texture;
+pub mod sampler;
+pub mod descriptor;
+pub mod command;
+pub mod sync;
+pub mod memory;
+pub mod upload;
+pub mod debug;
+pub mod context;
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
-}
+// Najczęściej używane typy dostępne przez `use gpu_abstraction::*`
+pub use types::*;
+pub use context::{GpuContext, ContextDesc};
+pub use device::GpuDevice;
+pub use pipeline::{Pipeline, PipelineDesc};
+pub use buffer::{Buffer, BufferUsage};
+pub use texture::Texture;
+pub use sampler::{Sampler, SamplerDesc, Filter, WrapMode};
+pub use shader::ShaderModule;
+pub use command::{CommandBuffer, CommandPool};
+pub use sync::{Fence, Semaphore, FrameSync};
+pub use framebuffer::{Framebuffer, FramebufferSet};
+pub use upload::Uploader;

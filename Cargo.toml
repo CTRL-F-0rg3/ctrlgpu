@@ -3,4 +3,19 @@ name = "ctrlGpu"
 version = "0.1.0"
 edition = "2024"
 
-[dependencies]
+dependencies]
+ash = "0.38"
+raw-window-handle = "0.6"
+thiserror = "1.0"
+log = "0.4"
+bitflags = "2.0"
+
+[target.'cfg(windows)'.dependencies]
+ash-window = "0.13"
+
+[target.'cfg(target_os = "linux")'.dependencies]
+ash-window = "0.13"
+
+[features]
+default = ["validation"]
+validation = []
